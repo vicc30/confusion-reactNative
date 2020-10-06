@@ -7,6 +7,32 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Menu from './MenuComponent';
 import Dishdetail from './DishDetailComponent';
 import Home from './HomeComponent';
+import Contact from './ContactComponent';
+
+//Creates Contact stack
+const ContactNavigator = createStackNavigator();
+
+function ContactNavigatorScreen() {
+    return(
+        <ContactNavigator.Navigator
+            initialRouteName='Contact'
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: "#512DA8"
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                    color: "#fff"
+                }
+            }}
+        >
+            <MenuNavigator.Screen
+                name="Contact"
+                component={Contact}
+            />
+        </ContactNavigator.Navigator>
+    );
+}
 
 // This creates Menu stack
 const MenuNavigator = createStackNavigator();
@@ -73,6 +99,7 @@ class Main extends React.Component {
                 <Drawer.Navigator initialRouteName="Home">
                     <Drawer.Screen name="Home" component={HomeNavigatorScreen} />
                     <Drawer.Screen name="Menu" component={MenuNavigatorScreen} />
+                    <Drawer.Screen name="Contact" component={ContactNavigatorScreen} />
                 </Drawer.Navigator>
             </NavigationContainer>
         );
