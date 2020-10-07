@@ -8,6 +8,33 @@ import Menu from './MenuComponent';
 import Dishdetail from './DishDetailComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
+
+//Creates About stack
+const AboutNavigator = createStackNavigator();
+
+function AboutNavigatorScreen() {
+    return(
+        <AboutNavigator.Navigator 
+            initialRouteName='About'
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: "#512DA8"
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                    color: "#fff"
+                }
+            }}
+        >
+            <AboutNavigator.Screen
+                name="About"
+                component={About}
+                options={{ headerTitle: "About Us" }}
+            />
+        </AboutNavigator.Navigator>
+    );
+}
 
 //Creates Contact stack
 const ContactNavigator = createStackNavigator();
@@ -26,9 +53,10 @@ function ContactNavigatorScreen() {
                 }
             }}
         >
-            <MenuNavigator.Screen
+            <ContactNavigator.Screen
                 name="Contact"
                 component={Contact}
+                options={{ headerTitle: "Contact Us" }}
             />
         </ContactNavigator.Navigator>
     );
@@ -98,8 +126,9 @@ class Main extends React.Component {
             <NavigationContainer>
                 <Drawer.Navigator initialRouteName="Home">
                     <Drawer.Screen name="Home" component={HomeNavigatorScreen} />
+                    <Drawer.Screen name="About" component={AboutNavigatorScreen} />
                     <Drawer.Screen name="Menu" component={MenuNavigatorScreen} />
-                    <Drawer.Screen name="Contact" component={ContactNavigatorScreen} />
+                    <Drawer.Screen name="Contact Us" component={ContactNavigatorScreen} />
                 </Drawer.Navigator>
             </NavigationContainer>
         );
