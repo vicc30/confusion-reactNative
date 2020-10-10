@@ -1,6 +1,5 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
-import { leaders } from './leaders';
 
 export const fetchComments = () => async (dispatch) => {
     return fetch(baseUrl + 'comments')

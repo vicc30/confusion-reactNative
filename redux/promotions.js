@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
-export const dishes = (state = {
+export const promotions = (state = {
     isLoading: true,
     errMess: null,
     promotions: []
