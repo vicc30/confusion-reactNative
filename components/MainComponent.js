@@ -15,7 +15,7 @@ import Menu from './MenuComponent';
 import Dishdetail from './DishdetailComponent';
 import Contact from './ContactComponent';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         dishes: state.dishes,
         comments: state.comments,

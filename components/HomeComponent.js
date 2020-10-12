@@ -2,10 +2,9 @@ import React from 'react';
 import { Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
 
-import { baseUrl } from '../shared/baseUrl'
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         dishes: state.dishes,
         comments: state.comments,
@@ -15,7 +14,6 @@ const mapStateToProps = state => {
 }
 
 function RenderItem(props) {
-
     const item = props.item;
 
     if (item != null) {
@@ -35,9 +33,7 @@ function RenderItem(props) {
     }
 }
 
-
 class Home extends React.Component {
-
     static navigationOptions = {
         title: 'Home',
     };

@@ -2,14 +2,13 @@ import React from 'react';
 import { View, FlatList } from 'react-native';
 import { Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
 
-import { baseUrl } from '../shared/baseUrl'
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         dishes: state.dishes
-    }
-}
+    };
+};
 
 class Menu extends React.Component {
 
@@ -30,7 +29,7 @@ class Menu extends React.Component {
         };
         return (
             <FlatList
-                data={this.props.dishes}
+                data={this.props.dishes.dishes}
                 renderItem={renderMenuItem}
                 keyExtractor={(item) => item.id.toString()}
             />
