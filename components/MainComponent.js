@@ -14,6 +14,7 @@ import About from './AboutComponent';
 import Menu from './MenuComponent';
 import Dishdetail from './DishdetailComponent';
 import Contact from './ContactComponent';
+import Reservation from './ReservationComponent';
 
 const mapStateToProps = (state) => {
     return {
@@ -161,7 +162,34 @@ function ContactNavigator({ navigation }) {
                 }}
             />
         </Stack.Navigator>
+    );
+}
 
+function ReservationNavigator({ navigation }) {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: "#512DA8"
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    color: "#fff"
+                }
+            }}>
+            <Stack.Screen name="Reservation" component={Reservation}
+                options={{
+                    title: 'Reservation',
+                    headerLeft: () => (
+                        <Icon name="menu" size={24}
+                            color='white'
+                            containerStyle={{ marginLeft: 10 }}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                }}
+            />
+        </Stack.Navigator>
     );
 }
 
@@ -215,6 +243,18 @@ function MainNavigator() {
                         name='address-card'
                         type='font-awesome'
                         size={22}
+                        color={tintColor}
+                    />
+                )
+            }} />
+            <Drawer.Screen name="Reservation" options={{ title: 'Reservation' }} component={ReservationNavigator} options={{
+                title: 'Reserve table',
+                drawerLabel: 'Reserve table',
+                drawerIcon: ({ tintColor, focused }) => (
+                    <Icon
+                        name='cutlery'
+                        type='font-awesome'
+                        size={24}
                         color={tintColor}
                     />
                 )
