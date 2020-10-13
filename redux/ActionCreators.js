@@ -8,7 +8,7 @@ export const fetchComments = () => async (dispatch) => {
                 if (response.ok) {
                     return response;
                 } else {
-                    var error = new Error( 'Error ' + response.status + ': ' + response.statusText );
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText);
                     error.response = response;
                     throw error;
                 }
@@ -42,7 +42,7 @@ export const fetchDishes = () => async (dispatch) => {
                 if (response.ok) {
                     return response;
                 } else {
-                    var error = new Error( 'Error ' + response.status + ': ' + response.statusText );
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText);
                     error.response = response;
                     throw error;
                 }
@@ -80,7 +80,7 @@ export const fetchPromos = () => async (dispatch) => {
                 if (response.ok) {
                     return response;
                 } else {
-                    var error = new Error('Error ' + response.status + ': ' + response.statusText );
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText);
                     error.response = response;
                     throw error;
                 }
@@ -157,3 +157,21 @@ export const addFavorite = (dishId) => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: dishId
 });
+
+export const addComment = (newComment) => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: newComment,
+});
+export const postComment = (author, comment, dishId, rating) => (dispatch) => {
+    const newComment = {
+        dishId: dishId,
+        author: author,
+        comment: comment,
+        rating: rating,
+    };
+    newComment.date = new Date().toISOString();
+    setTimeout(() => {
+        dispatch(addComment(newComment));
+    }, 2000);
+};
+
