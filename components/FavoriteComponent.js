@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, View, Text, Alert } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import SwipeOut from 'react-native-swipeout';
+import * as Animatable from 'react-native-animatable';
 
 import { connect } from 'react-redux';
 import { Loading } from './LoadingComponent';
@@ -35,7 +36,7 @@ class Favorites extends React.Component {
               'Are you sure you wih to delete the favorite dish ' + item.name + '?',
               [
                 {
-                  text: 'Cancel', 
+                  text: 'Cancel',
                   onPress: () => console.log(item.name + 'Not Deleted'),
                   style: 'cancel'
                 },
@@ -52,14 +53,17 @@ class Favorites extends React.Component {
 
       return (
         <SwipeOut right={rightButton} autoClose={true}>
-          <ListItem
-            key={index}
-            title={item.name}
-            subtitle={item.description}
-            hideChevron={true}
-            onPress={() => navigate('Favorites', { dishId: item.id })}
-            leftAvatar={{ source: { uri: baseUrl + item.image } }}
-          />
+          <Animatable.View animation='fadeInRightBig' duration={2000}>
+            <ListItem
+              key={index}
+              title={item.name}
+              subtitle={item.description}
+              hideChevron={true}
+              onPress={() => navigate('Favorites', { dishId: item.id })}
+              leftAvatar={{ source: { uri: baseUrl + item.image } }}
+            />
+
+          </Animatable.View>
         </SwipeOut>
 
       );
