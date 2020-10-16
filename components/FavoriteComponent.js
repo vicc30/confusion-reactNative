@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, Alert } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import SwipeOut from 'react-native-swipeout';
 
@@ -28,8 +28,25 @@ class Favorites extends React.Component {
       const rightButton = [
         {
           text: 'Delete',
-          type: 'Delete',
-          onPress: () => this.props.deleteFavorite(item.id)
+          type: 'delete',
+          onPress: () => {
+            Alert.alert(
+              'Delete Favorite',
+              'Are you sure you wih to delete the favorite dish ' + item.name + '?',
+              [
+                {
+                  text: 'Cancel', 
+                  onPress: () => console.log(item.name + 'Not Deleted'),
+                  style: 'cancel'
+                },
+                {
+                  text: 'Ok',
+                  onPress: () => this.props.deleteFavorite(item.id)
+                }
+              ],
+              { cancelable: false }
+            );
+          }
         }
       ];
 
