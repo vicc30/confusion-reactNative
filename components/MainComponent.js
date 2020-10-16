@@ -14,6 +14,7 @@ import About from './AboutComponent';
 import Menu from './MenuComponent';
 import Dishdetail from './DishdetailComponent';
 import Contact from './ContactComponent';
+import Favorites from './FavoriteComponent';
 import Reservation from './ReservationComponent';
 
 const mapStateToProps = (state) => {
@@ -34,6 +35,16 @@ const mapDispatchToProps = dispatch => ({
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+const HeaderOptions = {
+    headerStyle: {
+      backgroundColor: '#512DA8',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      color: '#fff',
+    },
+  };
 
 const CustomDrawerContentComponent = (props) => (
     <DrawerContentScrollView>
@@ -165,6 +176,27 @@ function ContactNavigator({ navigation }) {
     );
 }
 
+function FavoritesNavigatorScreen() {
+    return (
+        <Stack.Navigator screenOptions={HeaderOptions}>
+            <Stack.Screen
+                name="Reservation"
+                component={Favorites}
+                options={({ navigation }) => ({
+                    headerLeft: () => (
+                        <Icon
+                            name="menu"
+                            size={24}
+                            color="white"
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    ),
+                })}
+            />
+        </Stack.Navigator>
+    );
+}
+
 function ReservationNavigator({ navigation }) {
     return (
         <Stack.Navigator
@@ -247,6 +279,18 @@ function MainNavigator() {
                     />
                 )
             }} />
+            <Drawer.Screen name="My Favorites" component={FavoritesNavigatorScreen}
+                options={{
+                    drawerIcon: ({ tintColor }) => (
+                        <Icon
+                            name="heart"
+                            type="font-awesome"
+                            size={24}
+                            color={tintColor}
+                        />
+                    ),
+                }}
+            />
             <Drawer.Screen name="Reservation" options={{ title: 'Reservation' }} component={ReservationNavigator} options={{
                 title: 'Reserve table',
                 drawerLabel: 'Reserve table',
