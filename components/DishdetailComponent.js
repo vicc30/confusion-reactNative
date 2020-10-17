@@ -40,11 +40,11 @@ function RenderDish(props) {
         },
         onPanResponderGrant: () => {
             viewRef
-              .rubberBand(1000)
-              .then((endState) =>
-                console.log(endState.finished ? 'finished' : 'cancelled')
-              );
-          },
+                .rubberBand(1000)
+                .then((endState) =>
+                    console.log(endState.finished ? 'finished' : 'cancelled')
+                );
+        },
         onPanResponderEnd: (e, gestureState) => {
             if (recognizeDrag(gestureState))
                 Alert.alert(
