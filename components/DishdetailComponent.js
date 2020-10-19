@@ -84,9 +84,9 @@ function RenderDish(props) {
             message: title + ': ' + message + ' ' + url,
             url: url
         },
-        {
-            dialogTitle: 'Share ' + title
-        });
+            {
+                dialogTitle: 'Share ' + title
+            });
     }
 
     if (dish != null) {
@@ -115,7 +115,7 @@ function RenderDish(props) {
                             color="#512DA8"
                             onPress={() => toggleModal()}
                         />
-                        <Icon 
+                        <Icon
                             raised
                             reverse
                             name='share'
